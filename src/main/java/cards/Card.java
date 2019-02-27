@@ -1,6 +1,7 @@
 package cards;
 
 import abilities.Abilities;
+import abilities.NoAbility;
 import enums.Factions;
 import enums.Type;
 import traits.Trait;
@@ -14,6 +15,7 @@ protected int powerBase;
 protected int powerCurrent;
 protected Abilities ability;
 protected Trait trait;
+protected boolean alive = true;
 
 public Card(String name, Factions faction, Type type, int powerBase, int powerCurrent, Abilities ability, Trait trait) {
 	setName(name);
@@ -58,6 +60,7 @@ public Abilities getAbility() {
 return ability;}
 
 public void setAbility(Abilities ability) {
+	if (ability == null) {ability = new NoAbility();}
 	this.ability = ability;}
 
 public Trait getTrait() {
@@ -65,6 +68,24 @@ return trait;}
 
 public void setTrait(Trait trait) {
 	this.trait = trait;}
+
+public boolean isAlive() {
+return alive;}
+
+public void setAlive(boolean alive) {
+	this.alive = alive;}
+
+public void buff(int buff) {
+	if (buff < 0) {buff = 0;}
+	setPowerCurrent(getPowerCurrent() + buff);}
+
+public void damage(int damage) {
+	if (damage < 0) {damage = 0;}
+	setPowerCurrent(getPowerCurrent() - damage);}
+
+public void heal(int heal) {
+	if (getPowerCurrent() + heal > getPowerBase()) {setPowerCurrent(getPowerBase());}
+	setPowerCurrent(getPowerCurrent() + heal);}
 
 @Override
 public String toString() {
