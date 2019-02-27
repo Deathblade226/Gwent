@@ -4,6 +4,7 @@ import abilities.Abilities;
 import abilities.NoAbility;
 import enums.Factions;
 import enums.Type;
+import traits.NoTrait;
 import traits.Trait;
 
 public class Card {
@@ -67,6 +68,7 @@ public Trait getTrait() {
 return trait;}
 
 public void setTrait(Trait trait) {
+	if (trait == null) {trait = new NoTrait("Nothing");}
 	this.trait = trait;}
 
 public boolean isAlive() {
