@@ -17,7 +17,7 @@ public Deck(ArrayList<Card> deck, Card leader) {
 
 @Override
 public void shuffle(ArrayList<Card> deck) {
-	
+
 }
 
 public Card getLeader() {
