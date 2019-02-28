@@ -37,12 +37,14 @@ public Factions getFaction() {
 return faction;}
 
 public void setFaction(Factions faction) {
+	if (faction == null) {faction = Factions.UNKNOWN;}
 	this.faction = faction;}
 
 public Type getType() {
 return type;}
 
 public void setType(Type type) {
+	if (type == null) {type = Type.UNKNOWN;}
 	this.type = type;}
 
 public int getPowerBase() {

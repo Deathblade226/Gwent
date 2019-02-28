@@ -1,9 +1,9 @@
 package app;
 
-import controllers.Body;
+import controllers.GameMaster;
 
 public class Driver {
 
 public static void main(String[] args) {
-	Body.run();
+	GameMaster.run();
 }}

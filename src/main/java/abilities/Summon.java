@@ -43,8 +43,8 @@ public int inLastRow(Card card) {
 return 0;}
 
 public Card summon() {
-	Card summon;
-return summon = new Card("Nothing", null, null, getPower(), getPower(), null, null);}
+	Card summon = new Card("Nothing", null, null, getPower(), getPower(), null, null);;
+return summon;}
 
 public int getPower() {
 return power;}
@@ -57,5 +57,13 @@ return summonNumber;}
 
 public void setSummonNumber(int summonNumber) {
 	this.summonNumber = summonNumber;}
+
+public String getName() {
+return name;}
+
+public void setName(String name) {
+	this.name = name;}
 	
+
+
 }
