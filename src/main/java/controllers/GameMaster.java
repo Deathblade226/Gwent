@@ -1,6 +1,6 @@
 package controllers;
 
-public class Body {
+public class GameMaster {
 
 public static void run() {
 	
