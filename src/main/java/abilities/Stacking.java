@@ -46,4 +46,9 @@ return buff;}
 public void setBuff(int buff) {
 	this.buff = buff;}
 	
+@Override
+public Card createCard(Card card) {
+	
+return null;}
+
 }

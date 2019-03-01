@@ -46,5 +46,10 @@ return damage;}
 public void setBoost(int damage) {
 	if (damage < 0) {damage = 0;}
 	this.damage = damage;}
+
+@Override
+public Card createCard(Card card) {
 	
+return null;}
+
 }

@@ -46,4 +46,10 @@ return boost;}
 public void setBoost(int boost) {
 	if (boost < 0) {boost = 0;}
 	this.boost = boost;}
+
+@Override
+public Card createCard(Card card) {
+	
+return null;}
+
 }	

@@ -45,5 +45,10 @@ return heal;}
 
 public void setHeal(int heal) {
 	this.heal = heal;}
+
+@Override
+public Card createCard(Card card) {
+	
+return null;}
 	
 }

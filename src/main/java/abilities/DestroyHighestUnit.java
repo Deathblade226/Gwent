@@ -38,4 +38,9 @@ public int inLastRow(Card card) {
 
 return 0;}
 	
+@Override
+public Card createCard(Card card) {
+	
+return null;}
+
 }

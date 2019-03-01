@@ -2,22 +2,19 @@ package abilities;
 
 import cards.Card;
 
-public class DamageRange extends Abilities{
+public class LeaderEistTuirseach extends Abilities{ //Revives a card
 
-private int damage;	
-
-public DamageRange(String ability, String range, int damage) {
-	super(ability, range);
-	setBoost(damage);}
+public LeaderEistTuirseach(String ability, String range) {
+	super(ability, range);}
 
 @Override
 public int useOnSelf(Card card) {
-
+	
 return 0;}
 
 @Override
 public int useOnOther(Card card) {
-	
+	card.setAlive(true);
 return 0;}
 
 @Override
@@ -27,29 +24,22 @@ return 0;}
 
 @Override
 public int inFirstRow(Card card) {
-	
+
 return 0;}
 
 @Override
 public int inSecondRow(Card card) {
-	card.damage(damage);
+
 return 0;}
 
 @Override
 public int inLastRow(Card card) {
-	card.damage(damage);
+
 return 0;}
-
-public int getDamage() {
-return damage;}
-
-public void setBoost(int damage) {
-	if (damage < 0) {damage = 0;}
-	this.damage = damage;}
 
 @Override
 public Card createCard(Card card) {
 	
-return null;}
+return null;}	
 
 }

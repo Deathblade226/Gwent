@@ -35,6 +35,8 @@ public abstract int inSecondRow(Card card);
 
 public abstract int inLastRow(Card card);
 
+public abstract Card createCard(Card card);
+
 @Override
 public String toString() {
 	StringBuilder builder = new StringBuilder();
