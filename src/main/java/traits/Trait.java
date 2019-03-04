@@ -23,6 +23,13 @@ public abstract int useCharge(Card card);
 
 public abstract int summon(Card card);
 
+@Override
+public String toString() {
+	StringBuilder builder = new StringBuilder();
+	builder.append(getName());
+	return builder.toString();
+}
+
 
 
 }

@@ -9,13 +9,17 @@ public class Player {
 
 private String name;	
 private ArrayList<Card> hand = new ArrayList<>();
+private ArrayList<Card> holder = new ArrayList<>();
+private ArrayList<Card> graveyard = new ArrayList<>();
 private Card[][] field = new Card[3][9];
 private Factions faction;
-private int currentPoints;
+private Deck deck;
 
-public Player(String name, Factions faction) {
-	this.setName(name);
-	this.setFaction(faction);}
+public Player(String name, Factions faction, Deck deck) {
+	setName(name);
+	setFaction(faction);
+	setDeck(deck);
+	drawCards(10);}
 
 public String getName() {
 return name;}
@@ -41,16 +45,27 @@ return faction;}
 public void setFaction(Factions faction) {
 	this.faction = faction;}
 
-public int getCurrentPoints() {
-return currentPoints;}
+public ArrayList<Card> getGraveyard() {
+return graveyard;}
 
-public void setCurrentPoints(int currentPoints) {
-	this.currentPoints = currentPoints;}
+public void setGraveyard(ArrayList<Card> gaveyard) {
+	this.graveyard = gaveyard;}
+
+public Deck getDeck() {
+return deck;}
+
+public void setDeck(Deck deck) {
+	this.deck = deck;}
+
+public void drawCards(int total) {
+	for (int i = 0; i < total; i++) {
+	for (int x = 0; x < 1; x++)	{
+	hand.add(deck.getDeck().get(x));
+	deck.getDeck().remove(x);}}}
 
 @Override
 public String toString() {
 	StringBuilder builder = new StringBuilder();
-	builder.append(getName()).append("\n").append(getFaction()).append("\nCurrent Score: ").append(getCurrentPoints());
-	return builder.toString();}	
-
+	builder.append(getName()).append(": Faction: [").append(getFaction()).append("]");
+	return builder.toString();}
 }
