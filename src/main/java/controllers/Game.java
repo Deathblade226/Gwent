@@ -30,6 +30,9 @@ public static void gameRunning() {
 	boolean winner = false;
 do {Player currentPlayer = players[playerCurrent%2];
 	turnMenu(currentPlayer);
+	if (currentPlayer.getHand().size() == 0) {
+	if (currentPlayer == players[0]) {p1Pass = true;}	
+	}else {p2Pass = true;}
 	playerCurrent++;
 	if (p1Pass) {playerCurrent = 1;}
 	else if (p2Pass) {playerCurrent = 2;}
@@ -126,6 +129,7 @@ public static void postRound() {
 	p2Points = 0;
 	rounds++;
 	for (int i = 0; i < 2; i++) {
+	players[i].drawCards(3);
 	Card[][] holder = players[i].getField();
 	players[i].setField(clearFiled(holder));}}
 

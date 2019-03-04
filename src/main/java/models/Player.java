@@ -58,6 +58,7 @@ public void setDeck(Deck deck) {
 	this.deck = deck;}
 
 public void drawCards(int total) {
+	if (total > deck.getDeck().size()) {total = deck.getDeck().size();}
 	for (int i = 0; i < total; i++) {
 	for (int x = 0; x < 1; x++)	{
 	hand.add(deck.getDeck().get(x));

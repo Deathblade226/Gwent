@@ -2,15 +2,12 @@ package controllers;
 
 import java.util.ArrayList;
 
-import abilities.Abilities;
-import abilities.BoostSomeUnits;
 import abilities.Decoy;
 import abilities.LeadeKingHenselt;
 import abilities.LeaderBranTuirsach;
 import abilities.LeaderEistTuirseach;
 import abilities.LeaderJanCalveit;
 import abilities.LeaderPrincessAdda;
-import abilities.NoAbility;
 import cards.Artifact;
 import cards.Card;
 import cards.Leader;
@@ -18,11 +15,6 @@ import cards.Special;
 import enums.Factions;
 import enums.Type;
 import models.Deck;
-import traits.Charge;
-import traits.DeathWish;
-import traits.Deploy;
-import traits.NoTrait;
-import traits.Summon;
 
 public class DeckBuilder {
 
