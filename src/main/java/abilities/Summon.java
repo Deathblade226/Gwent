@@ -4,14 +4,14 @@ import cards.Card;
 
 public class Summon extends Abilities{
 
-private int power = 1;	
 private int summonNumber = 1;
 private String name;
+private Card summon;
 
-public Summon(String ability, String range, int power, int summonNumber) {
-	super(ability, range);
-	this.setPower(power);
-	this.setSummonNumber(summonNumber);}
+public Summon(String ability, String range, Card summon, int summonNumber) {
+	super(ability, range,0,0,0,0,summon,summonNumber);
+	setSummon(summon);
+	setSummonNumber(summonNumber);}
 
 @Override
 public int useOnSelf(Card card) {
@@ -42,16 +42,6 @@ return 0;}
 public int inLastRow(Card card) {
 return 0;}
 
-public Card summon() {
-	Card summon = new Card("Nothing", null, null, getPower(), getPower(), null, null);;
-return summon;}
-
-public int getPower() {
-return power;}
-
-public void setPower(int power) {
-	this.power = power;}
-
 public int getSummonNumber() {
 return summonNumber;}
 
@@ -64,6 +54,12 @@ return name;}
 public void setName(String name) {
 	this.name = name;}
 	
+public Card getSummon() {
+	return summon;}
+
+public void setSummon(Card summon) {
+	this.summon = summon;}
+
 @Override
 public Card createCard(Card card) {
 	

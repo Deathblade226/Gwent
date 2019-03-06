@@ -4,7 +4,7 @@ import cards.Card;
 
 public class NoAbility extends Abilities{
 
-public NoAbility() {super("Nothing", "Nothing");}
+public NoAbility() {super("", "",0,0,0,0,null,0);}
 
 @Override
 public int useOnSelf(Card card) {

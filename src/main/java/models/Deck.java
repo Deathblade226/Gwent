@@ -12,13 +12,18 @@ private Card leader;
 
 public Deck(ArrayList<Card> deck, Card leader) {
 	super();
-	this.setDeck(deck);
-	this.setLeader(leader);}
+	setDeck(deck);
+	setLeader(leader);
+	shuffle(getDeck());}
 
 @Override
 public void shuffle(ArrayList<Card> deck) {
-
-}
+	for (int i = 0; i < deck.size(); i++){
+	int index = lib.ConsoleIO.randInt(0, deck.size()-1);
+	Card temp = deck.get(index);
+	deck.set(index,deck.get(i));
+	deck.set(i,temp);}
+	setDeck(deck);}
 
 public Card getLeader() {
 return leader;}

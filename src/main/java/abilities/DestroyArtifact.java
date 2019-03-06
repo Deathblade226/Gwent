@@ -2,10 +2,10 @@ package abilities;
 
 import cards.Card;
 
-public class DestroyArtifact extends Abilities{
+public class DestroyArtifact extends Abilities{ //We dont use this because of artifacts being just decoys
 
 public DestroyArtifact(String ability, String range) {
-	super(ability, range);}
+	super(ability, range,0,0,0,0,null,0);}
 
 @Override
 public int useOnSelf(Card card) {

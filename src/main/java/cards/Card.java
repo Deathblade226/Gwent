@@ -17,6 +17,8 @@ protected int powerCurrent;
 protected Abilities ability;
 protected Trait trait;
 protected boolean alive = true;
+protected boolean canUseAbility = false;
+protected boolean used = false;
 
 public Card(String name, Factions faction, Type type, int powerBase, int powerCurrent, Abilities ability, Trait trait) {
 	setName(name);
@@ -70,7 +72,7 @@ public Trait getTrait() {
 return trait;}
 
 public void setTrait(Trait trait) {
-	if (trait == null) {trait = new NoTrait("Nothing");}
+	if (trait == null) {trait = new NoTrait();}
 	this.trait = trait;}
 
 public boolean isAlive() {
@@ -85,11 +87,24 @@ public void buff(int buff) {
 
 public void damage(int damage) {
 	if (damage < 0) {damage = 0;}
-	setPowerCurrent(getPowerCurrent() - damage);}
+	setPowerCurrent(getPowerCurrent() - damage);
+	if (getPowerCurrent() == 0) {setAlive(false);}}
 
 public void heal(int heal) {
-	if (getPowerCurrent() + heal > getPowerBase()) {setPowerCurrent(getPowerBase());}
+	if ((getPowerCurrent() + heal) > getPowerBase()) {setPowerCurrent(getPowerBase());}
 	setPowerCurrent(getPowerCurrent() + heal);}
+
+public boolean isCanUseAbility() {
+	return canUseAbility;}
+
+public void setCanUseAbility(boolean canUseAbility) {
+	this.canUseAbility = canUseAbility;}
+
+public boolean isUsed() {
+return used;}
+
+public void setUsed(boolean used) {
+	this.used = used;}
 
 @Override
 public String toString() {

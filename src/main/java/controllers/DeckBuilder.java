@@ -2,15 +2,13 @@ package controllers;
 
 import java.util.ArrayList;
 
-import abilities.Abilities;
-import abilities.BoostSomeUnits;
 import abilities.Decoy;
 import abilities.LeadeKingHenselt;
 import abilities.LeaderBranTuirsach;
 import abilities.LeaderEistTuirseach;
 import abilities.LeaderJanCalveit;
 import abilities.LeaderPrincessAdda;
-import abilities.NoAbility;
+import abilities.Summon;
 import cards.Artifact;
 import cards.Card;
 import cards.Leader;
@@ -18,11 +16,7 @@ import cards.Special;
 import enums.Factions;
 import enums.Type;
 import models.Deck;
-import traits.Charge;
-import traits.DeathWish;
 import traits.Deploy;
-import traits.NoTrait;
-import traits.Summon;
 
 public class DeckBuilder {
 
@@ -62,29 +56,32 @@ public static ArrayList<Card> cards(Factions faction) { //20 unit, 2 artifact, a
 	
 return cards;}
 
+//Charge only for special
+//Deploy and dethwish are card specific
+
 public static Card units(Factions faction, int spot) {
-	Card holder = null;
-	switch(spot) { //[10,9,9,8,8,7,7,7,6,6,5,5,4,4,3,3,3,3,2,2] "Name","faction","Type","PowerBase","PowerCurrent","Ability","Trait"
-	case 0: holder = new Card("Unit1",faction,Type.UNIT,2,2,null,null); break;
-	case 1: holder = new Card("Unit2",faction,Type.UNIT,2,2,null,null); break;
-	case 2: holder = new Card("Unit3",faction,Type.UNIT,3,3,null,null); break;
-	case 3: holder = new Card("Unit4",faction,Type.UNIT,3,3,null,null); break;
-	case 4: holder = new Card("Unit5",faction,Type.UNIT,3,3,null,null); break;
-	case 5: holder = new Card("Unit6",faction,Type.UNIT,3,3,null,null); break;
-	case 6: holder = new Card("Unit7",faction,Type.UNIT,4,4,null,null); break;
-	case 7: holder = new Card("Unit8",faction,Type.UNIT,4,4,null,null); break;
-	case 8: holder = new Card("Unit9",faction,Type.UNIT,5,5,null,null); break;
-	case 9: holder = new Card("Unit10",faction,Type.UNIT,5,5,null,null); break;
-	case 10: holder = new Card("Unit11",faction,Type.UNIT,6,6,null,null); break;
-	case 11: holder = new Card("Unit12",faction,Type.UNIT,6,6,null,null); break;
-	case 12: holder = new Card("Unit13",faction,Type.UNIT,7,7,null,null); break;
-	case 13: holder = new Card("Unit14",faction,Type.UNIT,7,7,null,null); break;
-	case 14: holder = new Card("Unit15",faction,Type.UNIT,7,7,null,null); break;
-	case 15: holder = new Card("Unit16",faction,Type.UNIT,8,8,null,null); break;
-	case 16: holder = new Card("Unit17",faction,Type.UNIT,8,8,null,null); break;
-	case 17: holder = new Card("Unit18",faction,Type.UNIT,9,9,null,null); break;
-	case 18: holder = new Card("Unit19",faction,Type.UNIT,9,9,null,null); break;
-	case 19: holder = new Card("Unit20",faction,Type.UNIT,10,10,null,null); break;}
+	Card holder = null; 
+	switch(spot) { //[10,9,9,8,8,7,7,7,6,6,5,5,4,4,3,3,3,3,2,2] "Name","faction","Type","PowerBase","PowerCurrent","Ability","Trait" //11 abilities / 9 no abilitys
+	case 0: holder = new Card("Ranger",faction,Type.RANGED,2,2,null,null); break; 		//No Ability 		//No Trait
+	case 1: holder = new Card("Ranger",faction,Type.RANGED,2,2,null,null); break; 		//No Ability 		//No Trait
+	case 2: holder = new Card("Warrior",faction,Type.MELEE,3,3,null,null); break; 		//Boost all units	//No Trait
+	case 3: holder = new Card("Warrior",faction,Type.MELEE,3,3,null,null); break; 		//Team-Up 			//Deploy
+	case 4: holder = new Card("Warrior",faction,Type.MELEE,3,3,null,null); break; 		//Team-Up 			//Deploy
+	case 5: holder = new Card("Warrior",faction,Type.MELEE,3,3,null,null); break; 		//Team-Up 			//Deploy
+	case 6: holder = new Card("Artillery",faction,Type.ARTILLERY,4,4,null,null); break; //Boost a Unit		//Deploy
+	case 7: holder = new Card("Artillery",faction,Type.ARTILLERY,4,4,null,null); break; //Consume			//Deploy
+	case 8: holder = new Card("Ranger",faction,Type.RANGED,5,5,null,null); break;		//Medic				//No Trait
+	case 9: holder = new Card("Artillery",faction,Type.ARTILLERY,5,5,null,null); break; //Boost all units	//No Trait
+	case 10: holder = new Card("Warrior",faction,Type.MELEE,6,6,null,null); break;		//Summon			//Deploy
+	case 11: holder = new Card("Artillery",faction,Type.ARTILLERY,6,6,null,null); break;//No Ability 		//No Trait
+	case 12: holder = new Card("Ranger",faction,Type.RANGED,7,7,null,null); break;		//Damage a unit		//Deathwish
+	case 13: holder = new Card("Artillery",faction,Type.ARTILLERY,7,7,null,null); break;//No Ability 		//No Trait
+	case 14: holder = new Card("Warrior",faction,Type.MELEE,7,7,null,null); break;		//No Ability 		//No Trait
+	case 15: holder = new Card("Ranger",faction,Type.RANGED,8,8,null,null); break; 		//No Ability 		//No Trait
+	case 16: holder = new Card("Artillery",faction,Type.ARTILLERY,8,8,null,null); break;//Summon			//Deploy
+	case 17: holder = new Card("Ranger",faction,Type.RANGED,9,9,null,null); break;  	//No Ability 		//No Trait
+	case 18: holder = new Card("Warrior",faction,Type.MELEE,9,9,null,null); break;		//No Ability 		//No Trait
+	case 19: holder = new Card("Warrior",faction,Type.MELEE,10,10,null,null); break;}  	//No Ability 		//No Trait
 return holder;}
 
 public static Card artifacts() { //Only 2 Decoys
@@ -126,52 +123,6 @@ public static Card leaderBSCS() {
 	Card leader = new Leader("Ryan Cox", Factions.BSCS, Type.LEADER, 14, 14, new LeaderJanCalveit("Look at the top 3 cards from your deck and play one","No Range"), null);
 	return leader;}
 
-/**	
-public static Abilities randAbility() {
-	Abilities holder = null;
-	int rng = lib.ConsoleIO.randInt(1, 23);
-	switch(rng) {
-	case 1: holder = new NoAbility(); break;
-	case 2: holder = new NoAbility(); break;
-	case 3: holder = new NoAbility(); break;
-	case 4: holder = new NoAbility(); break;
-	case 5: holder = new NoAbility(); break;
-	case 6: holder = new NoAbility(); break;
-	case 7: holder = new NoAbility(); break;
-	case 8: holder = new NoAbility(); break;
-	case 9: holder = new NoAbility(); break;
-	case 10: holder = new NoAbility(); break;
-	case 11: holder = new BoostAllUnits(); break;
-	case 12: holder = new BoostAUnit(); break;
-	case 13: holder = new BoostSomeUnits(); break;
-	case 14: holder = new (); break;
-	case 15: holder = new (); break;
-	case 16: holder = new (); break;
-	case 17: holder = new (); break;
-	case 18: holder = new (); break;
-	case 19: holder = new (); break;
-	case 20: holder = new (); break;
-	case 21: holder = new (); break;
-	case 22: holder = new (); break;
-	case 23: holder = new (); break;
-	}
-return holder;}
 
-public static Trait randTraitUnit(Abilities ability) {
-	Trait holder = null;
-	int rng = lib.ConsoleIO.randInt(1, 10);
-	int charges = lib.ConsoleIO.randInt(2, 3);
-	switch(rng) {
-	case 1: holder = new NoTrait("No Trait"); break;
-	case 2:	holder = new NoTrait("No Trait"); break;
-	case 3:	holder = new NoTrait("No Trait"); break;
-	case 4:	holder = new NoTrait("No Trait"); break;
-	case 5:	holder = new NoTrait("No Trait"); break;
-	case 6: if (ability != null) {holder = new DeathWish("Deathwish: Use ability on death.");} else {holder = new NoTrait("No Trait");} break;
-	case 7:	if (ability != null) {holder = new Deploy("Deploy: Use ability on place.");} else {holder = new NoTrait("No Trait");} break;
-	case 8:	holder = new Summon("Summon: Summon some 1 power unit cards."); break;
-	case 9: if (ability != null) {holder = new Charge("Charge: Can use ability " + charges + " times.", charges);} else {holder = new NoTrait("No Trait");} break;
-	case 10:holder = new NoTrait("No Trait"); break;}
-return holder;}
-**/
+
 }

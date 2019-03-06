@@ -5,7 +5,7 @@ import cards.Card;
 public class LeaderJanCalveit extends Abilities{ //Look at top 3 cards and play one
 
 public LeaderJanCalveit(String ability, String range) {
-	super(ability, range);}
+	super(ability, range,0,0,0,0,null,0);}
 
 @Override
 public int useOnSelf(Card card) {

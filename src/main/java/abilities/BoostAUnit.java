@@ -7,7 +7,7 @@ public class BoostAUnit extends Abilities{
 private int boost;	
 
 public BoostAUnit(String ability, String range, int boost) {
-	super(ability, range);
+	super(ability, range,0,0,1,boost,null,0);
 	setBoost(boost);}
 
 @Override

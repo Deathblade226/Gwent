@@ -7,7 +7,7 @@ public class HealRow extends Abilities{
 private int heal;	
 	
 public HealRow(String ability, String range, int heal) {
-	super(ability, range);
+	super(ability, range,heal,0,9,0,null,0);
 	setHeal(heal);}
 
 @Override

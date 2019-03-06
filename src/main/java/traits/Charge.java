@@ -6,8 +6,8 @@ public class Charge extends Trait{
 
 private int charges;	
 	
-public Charge(String name, int charges) {
-	super(name);
+public Charge(String name, Card summon, int totalSummons, int charges, boolean useOnPlace, boolean useOnDeath) {
+	super(name, summon, totalSummons, charges, useOnPlace, useOnDeath);
 	this.setCharges(charges);}
 
 @Override

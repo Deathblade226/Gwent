@@ -58,10 +58,22 @@ public void setDeck(Deck deck) {
 	this.deck = deck;}
 
 public void drawCards(int total) {
+	if (total > deck.getDeck().size()) {total = deck.getDeck().size();}
 	for (int i = 0; i < total; i++) {
 	for (int x = 0; x < 1; x++)	{
 	hand.add(deck.getDeck().get(x));
 	deck.getDeck().remove(x);}}}
+
+public Card takeRemoveCard(int spot) {
+	Card take = getHand().get(spot);
+	getHand().remove(spot);
+return take;}
+
+public ArrayList<Card> getHolder() {
+return holder;}
+
+public void setHolder(ArrayList<Card> holder) {
+	this.holder = holder;}
 
 @Override
 public String toString() {

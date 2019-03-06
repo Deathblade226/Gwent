@@ -7,7 +7,7 @@ public class DamageRow extends Abilities{
 private int damage;	
 
 public DamageRow(String ability, String range, int damage) {
-	super(ability, range);
+	super(ability, range,0,damage,9,0,null,0);
 	setBoost(damage);}
 
 @Override
