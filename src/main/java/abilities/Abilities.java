@@ -12,15 +12,17 @@ protected int heal;
 protected int howMany;
 protected Card summon;
 protected int summonTotal;
+protected String type;
 
-public Abilities(String ability, String range, int heal, int damage, int howMany, int boost, Card summon, int summonTotal) {
+public Abilities(String ability, String range, int heal, int damage, int howMany, int boost, Card summon, int summonTotal, String type) {
 	setAbility(ability);
 	setRange(range);
 	setDamage(damage);
 	setHeal(heal);
 	setHowMany(howMany);
 	setBoost(boost);
-	setSummon(summon);}
+	setSummon(summon);
+	setType(type);}
 
 public String getAbility() {
 	return ability;}
@@ -88,6 +90,12 @@ return summonTotal;}
 public void setSummonTotal(int summonTotal) {
 	if (summonTotal < 0) {summonTotal = 0;}
 	this.summonTotal = summonTotal;}
+
+public String getType() {
+return type;}
+
+public void setType(String type) {
+	this.type = type;}
 
 @Override
 public String toString() {

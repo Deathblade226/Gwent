@@ -9,7 +9,7 @@ private String name;
 private Card summon;
 
 public Summon(String ability, String range, Card summon, int summonNumber) {
-	super(ability, range,0,0,0,0,summon,summonNumber);
+	super(ability, range,0,0,0,0,summon,summonNumber,"Summon");
 	setSummon(summon);
 	setSummonNumber(summonNumber);}
 
@@ -46,6 +46,7 @@ public int getSummonNumber() {
 return summonNumber;}
 
 public void setSummonNumber(int summonNumber) {
+	if (summonNumber < 1) {summonNumber = 1;}
 	this.summonNumber = summonNumber;}
 
 public String getName() {

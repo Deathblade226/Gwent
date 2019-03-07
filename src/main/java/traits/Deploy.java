@@ -4,8 +4,8 @@ import cards.Card;
 
 public class Deploy extends Trait{
 
-public Deploy(String name, Card summon, int totalSummons, int charges, boolean useOnPlace, boolean useOnDeath) {
-	super(name, summon, totalSummons, charges, useOnPlace, useOnDeath);}
+public Deploy(String name) {
+	super(name, null, 0, 0, true, false);}
 
 @Override
 public void useAbility(Card card) {

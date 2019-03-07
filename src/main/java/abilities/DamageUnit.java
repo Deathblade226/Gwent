@@ -2,22 +2,22 @@ package abilities;
 
 import cards.Card;
 
-public class Consume extends Abilities{
+public class DamageUnit extends Abilities{
 
-private int boost;
-private int damage;
+private int damage;	
 
-public Consume(String ability, String range) {
-	super(ability, range,0,0,1,0,null,0,"Consume");}
+public DamageUnit(String ability, String range, int damage) {
+	super(ability, range,0,damage,1,0,null,0,"DamageUnit");
+	setBoost(damage);}
 
 @Override
 public int useOnSelf(Card card) {
-	card.buff(getBoost());
+
 return 0;}
 
 @Override
 public int useOnOther(Card card) {
-	card.damage(damage);
+	
 return 0;}
 
 @Override
@@ -27,7 +27,7 @@ return 0;}
 
 @Override
 public int inFirstRow(Card card) {
-	
+	card.damage(damage);
 return 0;}
 
 @Override
@@ -40,19 +40,13 @@ public int inLastRow(Card card) {
 
 return 0;}
 
-public int getBoost() {
-return boost;}
-
-public void setBoost(int boost) {
-	if (boost < 0) {boost = 0;}
-	this.boost = boost;}
-
 public int getDamage() {
 return damage;}
 
-public void setDamage(int damage) {
+public void setBoost(int damage) {
+	if (damage < 0) {damage = 0;}
 	this.damage = damage;}
-	
+
 @Override
 public Card createCard(Card card) {
 	

@@ -7,7 +7,7 @@ public class DamageMelee extends Abilities{
 private int damage;	
 
 public DamageMelee(String ability, String range, int damage, int howMany) {
-	super(ability, range,0,damage,howMany,0,null,0);
+	super(ability, range,0,damage,howMany,0,null,0,"DamageMelee");
 	setBoost(damage);}
 
 @Override

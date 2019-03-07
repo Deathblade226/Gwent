@@ -5,7 +5,7 @@ import cards.Card;
 public class LeaderBranTuirsach extends Abilities{ //Discard Draw Damage
 
 public LeaderBranTuirsach(String ability, String range) {
-	super(ability, range,0,2,1,0,null,0);}
+	super(ability, range,0,2,1,0,null,0,"LeaderBranTrirsach");}
 
 @Override
 public int useOnSelf(Card card) {

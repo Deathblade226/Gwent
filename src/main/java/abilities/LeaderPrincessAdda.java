@@ -7,7 +7,7 @@ public class LeaderPrincessAdda extends Abilities{ //Damage a unit by 8
 private int damage = 8;	
 	
 public LeaderPrincessAdda(String ability, String range) {
-	super(ability, range,0,8,0,0,null,0);}
+	super(ability, range,0,8,0,0,null,0,"LeaderPrincessAdda");}
 
 @Override
 public int useOnSelf(Card card) {

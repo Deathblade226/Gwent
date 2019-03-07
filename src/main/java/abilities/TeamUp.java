@@ -7,7 +7,7 @@ public class TeamUp extends Abilities{
 private int buff;	
 	
 public TeamUp(String ability, String range, int buff) {
-	super(ability, range,0,0,0,buff,null,0);
+	super(ability, range,0,0,0,buff,null,0,"TeamUp");
 	setBuff(buff);}
 
 @Override

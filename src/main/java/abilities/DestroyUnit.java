@@ -5,7 +5,7 @@ import cards.Card;
 public class DestroyUnit extends Abilities{
 
 public DestroyUnit(String ability, String range) {
-	super(ability, range,0,0,1,0,null,0);}
+	super(ability, range,0,0,1,0,null,0,"DestroyUnit");}
 
 @Override
 public int useOnSelf(Card card) {

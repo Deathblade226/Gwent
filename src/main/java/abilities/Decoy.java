@@ -5,7 +5,7 @@ import cards.Card;
 public class Decoy extends Abilities{
 
 public Decoy(String ability, String range) {
-	super(ability, range,0,0,1,0,null,0);}
+	super(ability, range,0,0,1,0,null,0,"Decoy");}
 
 @Override
 public int useOnSelf(Card card) {

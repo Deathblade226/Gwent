@@ -5,7 +5,7 @@ import cards.Card;
 public class Medic extends Abilities{
 
 public Medic(String ability, String range) {
-	super(ability, range,0,0,1,0,null,0);}
+	super(ability, range,0,0,1,0,null,0,"Medic");}
 
 @Override
 public int useOnSelf(Card card) {

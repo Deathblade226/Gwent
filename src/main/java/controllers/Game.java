@@ -2,6 +2,8 @@ package controllers;
 
 import java.util.ArrayList;
 
+import abilities.Abilities;
+import abilities.NoAbility;
 import cards.Card;
 import enums.Factions;
 import enums.Type;
@@ -73,17 +75,17 @@ do {lib.ConsoleIO.lineBuilder("=", 40);
 	p1Field();
 	lib.ConsoleIO.lineBuilder("=", 40);
 	System.out.println(player);
-	String[] options = {"Play a card","Use card ability","End turn","Pass Turn","View Graveyard","Damage card"};
+	String[] options = {"Play a card","Use card ability","Use special card from hand","End turn","Pass Turn","View Graveyard"};
 	int in = lib.ConsoleIO.promptForMenuSelection(options, false);
 	
 	switch(in) {
-	case 1: if (!played) {handMenu(player); mustPlay = false;} else {lib.ConsoleIO.lineBuilder("=", 40); System.out.println("You have already played this turn.");} played = true; break;
-	case 2: System.out.println("WIP"); mustPlay = false; break;
-	case 3: if (!mustPlay) {playing = false;} else {System.out.println("You have to play a card or pass your turn.");} break;
-	case 4: if (!played) {playing = false; if (player == players[0]) {p1Pass = true;} else {p2Pass = true;}}else {lib.ConsoleIO.lineBuilder("=", 40); System.out.println("You cant pass your turn because you played a card this turn.");} break;
-	case 5: graveyard(player); break;
-	case 6: Card holder = enemyField(player); if (holder != null) {damageCard(null,holder,lib.ConsoleIO.promptForInt("How much damage: ", 1, Integer.MAX_VALUE),player); } break;}
-	checkCards();
+	case 1: if (!played) {boolean valid = handMenu(player);  if (valid) {mustPlay = false;}} else {lib.ConsoleIO.lineBuilder("=", 40); System.out.println("You have already played this turn.");} played = true; break;
+	case 2: useAbility(player); break;
+	case 3: System.out.println("WIP"); lib.ConsoleIO.lineBuilder("=", 40); break;
+	case 4: if (!mustPlay) {playing = false;} else {System.out.println("You have to play a card or pass your turn.");} break;
+	case 5: if (!played) {playing = false; if (player == players[0]) {p1Pass = true;} else {p2Pass = true;}}else {lib.ConsoleIO.lineBuilder("=", 40); System.out.println("You cant pass your turn because you played a card this turn.");} break;
+	case 6: graveyard(player); break;}
+	checkCards(player);
 }while (playing);}
 
 public static void fieldView(Player player) {
@@ -109,7 +111,7 @@ public static void checkAbility() {
 	
 }
 
-public static void handMenu(Player player) {
+public static boolean handMenu(Player player) {
 	boolean valid = true;
 do {lib.ConsoleIO.lineBuilder("=", 40);
 	ArrayList<Card> hand = player.getHand();
@@ -121,7 +123,8 @@ do {lib.ConsoleIO.lineBuilder("=", 40);
 	if (in != 0) {valid = playCard(player, player.getHand().get(in-1), player.getField());
 	if (valid) {player.takeRemoveCard(in-1);}}
 	else if (in == 0) {valid = true;}
-}while(!valid);}
+}while(!valid);
+return valid;}
 
 public static boolean playCard(Player player, Card card, Card[][] field) {
 	boolean valid = true;
@@ -164,6 +167,81 @@ public static void addPointsDemo(Player player) {
 	if (players[0] == player) {p1Points = in;}
 	else if (players[1] == player) {p2Points = in;}}}
 
+public static void useAbility(Player player) {
+	Card[][] field = player.getField();
+	ArrayList<Card> holder = new ArrayList<>();
+	Abilities blank = new NoAbility();
+	lib.ConsoleIO.lineBuilder("=", 40);
+	for (int i = 0; i < field.length; i++) {
+	for (int x = 0; x < field[i].length; x++) {
+	if (field[i][x] != null) {if (field[i][x].getAbility() != null && field[i][x].getAbility() != blank && !field[i][x].isUsed()) {holder.add(field[i][x]);}}}}
+	for (int i = 0; i < holder.size(); i++) {
+	System.out.println((i+1) + ") " + holder.get(i));}
+	System.out.println("0) Quit");
+	lib.ConsoleIO.lineBuilder("=", 40);
+	int in = lib.ConsoleIO.promptForInt("Enter here: ", 0, holder.size());
+	lib.ConsoleIO.lineBuilder("=", 40);
+	if (in != 0) {checkAbility(holder.get(in-1),player); holder.get(in-1).setUsed(true);}}
+
+public static void checkAbility(Card card, Player player) {
+	switch(card.getAbility().getType()) {
+	case "BoostAllUnits": boostAllUnits(card, player); break;
+	case "BoostAUnits": boostAUnits(card, player); break;
+	case "TeamUp": teamUp(card, player); break;
+	case "Consume": consume(card, player); break;
+	case "Medic": medic(card, player); break;
+	case "Summon": summon(card, player); break;
+	case "DamageUnit": Card holder = enemyField(player); if (holder != null) {damageCard(card, holder, player);} break;
+	case "NoAbility": System.out.println("That card has no ability select a different card."); break;}}
+
+public static void boostAUnits(Card card, Player player) {
+	
+}
+
+public static void boostAllUnits(Card card, Player player) {
+	Card[][] field = player.getField();
+	int buff = card.getAbility().getBoost();
+	for (int i = 0; i < field.length; i++) {
+	for (int x = 0; x < field[i].length; x++) {
+	if (field[i][x] != null) {field[i][x].buff(buff);}}}
+	addPoints(player);}
+
+public static void teamUp(Card card, Player player) {
+	Card[][] field = player.getField();
+	int boost = card.getAbility().getBoost();
+	for (int i = 0; i < field.length; i++) {
+	for (int x = 0; x < field[i].length; x++) {
+	if (field[i][x] != null) {if (field[i][x].getAbility().getType() == "TeamUp") {field[i][x].buff(boost);}}}}}
+
+public static void consume(Card card, Player player) {
+	Card[][] field = player.getField();
+	int power = 0;
+	ArrayList<Card> holder = new ArrayList<>();
+	for (int i = 0; i < field.length; i++) {
+	for (int x = 0; x < field[i].length; x++) {
+	if (field[i][x] != null && field[i][x] != card) {
+	holder.add(field[i][x]);}}}
+
+	for (int i = 0; i < holder.size(); i++) {
+	System.out.println((i+1) + ") " + holder.get(i));}
+	lib.ConsoleIO.lineBuilder("=", 40);
+	int in = lib.ConsoleIO.promptForInt("What card are you eating: ", 0, holder.size());
+	lib.ConsoleIO.lineBuilder("=", 40);
+	if (in != 0) {power = holder.get(in-1).getPowerCurrent();
+	holder.get(in-1).damage(power);
+	card.buff(power);
+	holder.get(in-1).setUsed(true);}}
+
+public static void medic(Card card, Player player) {
+	boolean valid = true;
+	Card holder = null;
+do {holder = graveyard(player);
+	valid = playCard(player, holder, player.getField());
+}while(!valid);	
+	ArrayList<Card> graveyard = player.getGraveyard();
+	for (int i = 0; i < graveyard.size(); i++) {
+	if (graveyard.get(i) == holder) {graveyard.remove(i); i = graveyard.size(); card.setUsed(true);}}}
+
 public static void flipcoin() {
 	System.out.println(players[0] + " is heads");
 	System.out.println(players[1] + " is tails");
@@ -173,16 +251,27 @@ public static void flipcoin() {
 	case 1: case 2: case 3: case 4: case 5: System.out.println("The coin landed heads, " + players[0] + " goes first."); startingPlayer = 0; playerCurrent = 0; break;
 	case 6:	case 7: case 8: case 9: case 10:System.out.println("The coin landed tails, " + players[1] + " goes first."); startingPlayer = 1; playerCurrent = 1; break;}}
 
-public static void checkCards() {
+public static void checkCards(Player player) {
 	for (int i = 0; i < 2; i++) {
-	Player player = players[i];
-	for (int x = 0; x < 2; x++) {
 	Card[][] field = player.getField();
-	for (int z = 0; z < 2; z++) {	
-	if (field[x][z] != null && field[x][z].isAlive() == false) {field[x][z].heal(field[x][z].getPowerBase()); player.getGraveyard().add(field[x][z]); field[x][z] = null;}}}}}
+	for (int x = 0; x < 3; x++) {
+	int counter = 0;
+	Card[] holder = new Card[9];
+	for (int c = 0; c < 9; c++) {
+	if (field[x][c] != null && field[x][c].isAlive() == false) {field[x][c].heal(field[x][c].getPowerBase()); player.getGraveyard().add(field[x][c]); field[x][c] = null;}
+	if (field[x][c] != null && field[x][c].getPowerCurrent() != 0) {holder[counter] = field[x][c]; counter++;}}	
+	field[x] = holder;}}}
 
-public static void damageCard(Card damager, Card damaged, int damage, Player player) {
-//	int damage = damager.getAbility().getDamage();
+//public static void checkCards() {
+//	for (int i = 0; i < 2; i++) {
+//	Player player = players[i];
+//	for (int x = 0; x < 2; x++) {
+//	Card[][] field = player.getField();
+//	for (int z = 0; z < 2; z++) {	
+//	if (field[x][z] != null && field[x][z].isAlive() == false) {field[x][z].heal(field[x][z].getPowerBase()); player.getGraveyard().add(field[x][z]); field[x][z] = null;}}}}}
+
+public static void damageCard(Card damager, Card damaged, Player player) {
+	int damage = damager.getAbility().getDamage();
 	if (damaged.getPowerCurrent() < damage) {damage = damaged.getPowerCurrent();}
 	if (player == players[1]) {
 	if (p1Points < damage) {p1Points = 0;} else {p1Points -= damage;}	
@@ -191,9 +280,10 @@ public static void damageCard(Card damager, Card damaged, int damage, Player pla
 	damaged.damage(damage);}
 
 public static void summon(Card card, Player player) {
-	int total = card.getAbility().getSummonTotal();
-	for (int i = 0; i < total; i++) {		
-	playCard(player, card.getAbility().getSummon(),player.getField());}}
+	Card summon = card.getAbility().getSummon();
+	for (int i = 0; i < 3; i++) {		
+	playCard(player, new Card(card.getAbility().getSummon().getName(),card.getAbility().getSummon().getFaction(),card.getAbility().getSummon().getType(),1,1,null,null),player.getField());}
+	System.out.println(player + "\nSummoned : 3 \n" + summon);}
 
 public static Card enemyField(Player player) {
 	lib.ConsoleIO.lineBuilder("=", 40);

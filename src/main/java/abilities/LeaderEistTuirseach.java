@@ -5,7 +5,7 @@ import cards.Card;
 public class LeaderEistTuirseach extends Abilities{ //Revives a card
 
 public LeaderEistTuirseach(String ability, String range) {
-	super(ability, range,0,0,1,0,null,0);}
+	super(ability, range,0,0,1,0,null,0,"LeaderEistTuirseach");}
 
 @Override
 public int useOnSelf(Card card) {

@@ -2,20 +2,28 @@ package controllers;
 
 import java.util.ArrayList;
 
+import abilities.BoostAUnit;
+import abilities.BoostAllUnits;
+import abilities.Consume;
+import abilities.DamageUnit;
 import abilities.Decoy;
 import abilities.LeadeKingHenselt;
 import abilities.LeaderBranTuirsach;
 import abilities.LeaderEistTuirseach;
 import abilities.LeaderJanCalveit;
 import abilities.LeaderPrincessAdda;
+import abilities.Medic;
 import abilities.Summon;
+import abilities.TeamUp;
 import cards.Artifact;
 import cards.Card;
 import cards.Leader;
 import cards.Special;
+import cards.Unit;
 import enums.Factions;
 import enums.Type;
 import models.Deck;
+import traits.DeathWish;
 import traits.Deploy;
 
 public class DeckBuilder {
@@ -64,28 +72,28 @@ public static Card units(Factions faction, int spot) {
 	switch(spot) { //[10,9,9,8,8,7,7,7,6,6,5,5,4,4,3,3,3,3,2,2] "Name","faction","Type","PowerBase","PowerCurrent","Ability","Trait" //11 abilities / 9 no abilitys
 	case 0: holder = new Card("Ranger",faction,Type.RANGED,2,2,null,null); break; 		//No Ability 		//No Trait
 	case 1: holder = new Card("Ranger",faction,Type.RANGED,2,2,null,null); break; 		//No Ability 		//No Trait
-	case 2: holder = new Card("Warrior",faction,Type.MELEE,3,3,null,null); break; 		//Boost all units	//No Trait
-	case 3: holder = new Card("Warrior",faction,Type.MELEE,3,3,null,null); break; 		//Team-Up 			//Deploy
-	case 4: holder = new Card("Warrior",faction,Type.MELEE,3,3,null,null); break; 		//Team-Up 			//Deploy
-	case 5: holder = new Card("Warrior",faction,Type.MELEE,3,3,null,null); break; 		//Team-Up 			//Deploy
-	case 6: holder = new Card("Artillery",faction,Type.ARTILLERY,4,4,null,null); break; //Boost a Unit		//Deploy
-	case 7: holder = new Card("Artillery",faction,Type.ARTILLERY,4,4,null,null); break; //Consume			//Deploy
-	case 8: holder = new Card("Ranger",faction,Type.RANGED,5,5,null,null); break;		//Medic				//No Trait
-	case 9: holder = new Card("Artillery",faction,Type.ARTILLERY,5,5,null,null); break; //Boost all units	//No Trait
-	case 10: holder = new Card("Warrior",faction,Type.MELEE,6,6,null,null); break;		//Summon			//Deploy
+	case 2: holder = new Card("Warrior",faction,Type.MELEE,3,3, new BoostAllUnits("Boost all units by 2.","Melee: ", 2),null); break; 		//Boost all units	//No Trait
+	case 3: holder = new Card("Warrior",faction,Type.MELEE,3,3, new TeamUp("Boost self by 1 for each card with team up on your side.", "Row: ", 1), new Deploy("Deploy: This card uses its ability on place.")); break; 		//Team-Up 			//Deploy
+	case 4: holder = new Card("Warrior",faction,Type.MELEE,3,3, new TeamUp("Boost self by 1 for each card with team up on your side.", "Row: ", 1), new Deploy("Deploy: This card uses its ability on place.")); break; 		//Team-Up 			//Deploy
+	case 5: holder = new Card("Warrior",faction,Type.MELEE,3,3, new TeamUp("Boost self by 1 for each card with team up on your side.", "Row: ", 1), new Deploy("Deploy: This card uses its ability on place.")); break; 		//Team-Up 			//Deploy
+	case 6: holder = new Card("Artillery",faction,Type.ARTILLERY,4,4, new BoostAUnit("Consume a unit on your side and boost self by their current power.","Artillery: ", 0), new Deploy("Deploy: This card uses its ability on place.")); break; //Boost a Unit		//Deploy
+	case 7: holder = new Card("Artillery",faction,Type.ARTILLERY,4,4, new Consume("Consume a unit your side and add its current power to this card.","Ranged: "), new Deploy("Deploy: This card uses its ability on place.")); break; //Consume			//Deploy
+	case 8: holder = new Card("Ranger",faction,Type.RANGED,5,5, new Medic("Bring a card back from your graveyard.","Ranged: "),null); break;		//Medic				//No Trait
+	case 9: holder = new Card("Artillery",faction,Type.ARTILLERY,5,5,new BoostAllUnits("Boost all units by 2.","Artillery: ", 2),null); break; //Boost all units	//No Trait
+	case 10: holder = new Card("Warrior",faction,Type.MELEE,6,6, new Summon("Summon 3 spiders (1 Power) to the melee row.","Melee: ", new Unit("Spider",Factions.UNKNOWN,Type.MELEE,1,1,null,null),3), new Deploy("Deploy: This card uses its ability on place.")); break;		//Summon			//Deploy
 	case 11: holder = new Card("Artillery",faction,Type.ARTILLERY,6,6,null,null); break;//No Ability 		//No Trait
-	case 12: holder = new Card("Ranger",faction,Type.RANGED,7,7,null,null); break;		//Damage a unit		//Deathwish
+	case 12: holder = new Card("Ranger",faction,Type.RANGED,7,7, new DamageUnit("Damage an enemy unit for 2 damage.","Ranged: ",2), new DeathWish("Deathwish: This card uses its ability on death.")); break;		//Damage a unit		//Deathwish
 	case 13: holder = new Card("Artillery",faction,Type.ARTILLERY,7,7,null,null); break;//No Ability 		//No Trait
 	case 14: holder = new Card("Warrior",faction,Type.MELEE,7,7,null,null); break;		//No Ability 		//No Trait
 	case 15: holder = new Card("Ranger",faction,Type.RANGED,8,8,null,null); break; 		//No Ability 		//No Trait
-	case 16: holder = new Card("Artillery",faction,Type.ARTILLERY,8,8,null,null); break;//Summon			//Deploy
+	case 16: holder = new Card("Artillery",faction,Type.ARTILLERY,8,8, new Summon("Summon 2 Mortar Cannon (1 Power) to the artillery row.","Artillery: ", new Unit("Mortar Cannon",Factions.UNKNOWN,Type.ARTILLERY,1,1,null,null),2), new Deploy("Deploy: This card uses its ability on place.")); break;//Summon			//Deploy
 	case 17: holder = new Card("Ranger",faction,Type.RANGED,9,9,null,null); break;  	//No Ability 		//No Trait
 	case 18: holder = new Card("Warrior",faction,Type.MELEE,9,9,null,null); break;		//No Ability 		//No Trait
 	case 19: holder = new Card("Warrior",faction,Type.MELEE,10,10,null,null); break;}  	//No Ability 		//No Trait
 return holder;}
 
 public static Card artifacts() { //Only 2 Decoys
-	Card decoy = new Artifact("Decoy",Factions.UNKNOWN,Type.ARTIFACT,0,0,new Decoy("Replace a unit card on your side with this card and add that unit to your hand.","No Range"),null);
+	Card decoy = new Artifact("Decoy",Factions.UNKNOWN,Type.ARTIFACT,1,1,new Decoy("Replace a unit card on your side with this card and add that unit to your hand.","No Range"),null);
 return decoy;}
 
 public static Card special(int spot, Factions faction) { //name, faction, type, powerBase, powerCurrent, ability, trait
