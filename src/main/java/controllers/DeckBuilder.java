@@ -2,11 +2,12 @@ package controllers;
 
 import java.util.ArrayList;
 
-import abilities.BoostAUnit;
 import abilities.BoostAllUnits;
 import abilities.Consume;
 import abilities.DamageUnit;
 import abilities.Decoy;
+import abilities.DestroyHighestUnit;
+import abilities.HealCard;
 import abilities.LeadeKingHenselt;
 import abilities.LeaderBranTuirsach;
 import abilities.LeaderEistTuirseach;
@@ -76,7 +77,7 @@ public static Card units(Factions faction, int spot) {
 	case 3: holder = new Card("Warrior",faction,Type.MELEE,3,3, new TeamUp("Boost self by 1 for each card with team up on your side.", "Row: ", 1), new Deploy("Deploy: This card uses its ability on place.")); break; 		//Team-Up 			//Deploy
 	case 4: holder = new Card("Warrior",faction,Type.MELEE,3,3, new TeamUp("Boost self by 1 for each card with team up on your side.", "Row: ", 1), new Deploy("Deploy: This card uses its ability on place.")); break; 		//Team-Up 			//Deploy
 	case 5: holder = new Card("Warrior",faction,Type.MELEE,3,3, new TeamUp("Boost self by 1 for each card with team up on your side.", "Row: ", 1), new Deploy("Deploy: This card uses its ability on place.")); break; 		//Team-Up 			//Deploy
-	case 6: holder = new Card("Artillery",faction,Type.ARTILLERY,4,4, new BoostAUnit("Consume a unit on your side and boost self by their current power.","Artillery: ", 0), new Deploy("Deploy: This card uses its ability on place.")); break; //Boost a Unit		//Deploy
+	case 6: holder = new Card("Artillery",faction,Type.ARTILLERY,4,4, new DamageUnit("Damage an enemy unit for 2 damage.","Ranged: ",2), new DeathWish("Deathwish: This card uses its ability on death.")); break; //Boost a Unit		//Deploy
 	case 7: holder = new Card("Artillery",faction,Type.ARTILLERY,4,4, new Consume("Consume a unit your side and add its current power to this card.","Ranged: "), new Deploy("Deploy: This card uses its ability on place.")); break; //Consume			//Deploy
 	case 8: holder = new Card("Ranger",faction,Type.RANGED,5,5, new Medic("Bring a card back from your graveyard.","Ranged: "),null); break;		//Medic				//No Trait
 	case 9: holder = new Card("Artillery",faction,Type.ARTILLERY,5,5,new BoostAllUnits("Boost all units by 2.","Artillery: ", 2),null); break; //Boost all units	//No Trait
@@ -99,16 +100,16 @@ return decoy;}
 public static Card special(int spot, Factions faction) { //name, faction, type, powerBase, powerCurrent, ability, trait
 	Card holder = null;
 	switch(spot) {
-	case 0: holder = new Special("Special1",faction,Type.SPECIAL,0,0,null,null); break;
-	case 1: holder = new Special("Special2",faction,Type.SPECIAL,0,0,null,null); break;
-	case 2: holder = new Special("Special3",faction,Type.SPECIAL,0,0,null,null); break;
-	case 3: holder = new Special("Special4",faction,Type.SPECIAL,0,0,null,null); break;
-	case 4: holder = new Special("Special5",faction,Type.SPECIAL,0,0,null,null); break;
-	case 5: holder = new Special("Special6",faction,Type.SPECIAL,0,0,null,null); break;
-	case 6: holder = new Special("Special7",faction,Type.SPECIAL,0,0,null,null); break;
-	case 7: holder = new Special("Special8",faction,Type.SPECIAL,0,0,null,null); break;
-	case 8: holder = new Special("Special9",faction,Type.SPECIAL,0,0,null,null); break;
-	case 9: holder = new Special("Special10",faction,Type.SPECIAL,0,0,null,null); break;}
+	case 0: holder = new Special("Holy Light",faction,Type.SPECIAL,0,0, new BoostAllUnits("Boost all units by 2.","Special Card: ", 2),null); break; 	//Boost all units
+	case 1: holder = new Special("Scorch",faction,Type.SPECIAL,0,0, new DestroyHighestUnit("Destroy the highest unit on the field.","Special Card: "),null); break;		//Destroy highest level
+	case 2: holder = new Special("Thunder",faction,Type.SPECIAL,0,0, new DamageUnit("Damage an enemy unit for 5 damage.","Special Card: ",2),null); break;		//Damage a card by X amount				//Charges: 3
+	case 3: holder = new Special("Thunder",faction,Type.SPECIAL,0,0, new DamageUnit("Damage an enemy unit for 5 damage.","Special Card: ",2),null); break;		//Damage a card by X amount				//Charges: 3			
+	case 4: holder = new Special("Health Potion",faction,Type.SPECIAL,0,0, new HealCard("Heal a unit card for 5 points.","Special Card: ",5),null); break;		//Heal a card by X						
+	case 5: holder = new Special("Health Potion",faction,Type.SPECIAL,0,0, new HealCard("Heal a unit card for 5 points.","Special Card: ",5),null); break;		//Heal a card by X
+	case 6: holder = new Special("Spider Eggs",faction,Type.SPECIAL,0,0, new Summon("Summon 3 spiders (1 Power) to the melee row.","Melee: ", new Unit("Spider",Factions.UNKNOWN,Type.MELEE,1,1,null,null),3),null); break;		//Summon X SomeMonster (1 power) units
+	case 7: holder = new Special("Spider Eggs",faction,Type.SPECIAL,0,0, new Summon("Summon 3 spiders (1 Power) to the melee row.","Melee: ", new Unit("Spider",Factions.UNKNOWN,Type.MELEE,1,1,null,null),3),null); break;		//Summon X SomeMonster (1 power) units
+	case 8: holder = new Special("Revive",faction,Type.SPECIAL,0,0, new Medic("Revives a card from your grave yard.","Special Card: "),null); break;		//Revive a card
+	case 9: holder = new Special("Revive",faction,Type.SPECIAL,0,0, new Medic("Revives a card from your grave yard.","Special Card: "),null); break;}	//Revive a card
 return holder;}
 
 public static Card leaderBSGD() {
@@ -130,7 +131,5 @@ public static Card leaderBSWD() {
 public static Card leaderBSCS() {
 	Card leader = new Leader("Ryan Cox", Factions.BSCS, Type.LEADER, 14, 14, new LeaderJanCalveit("Look at the top 3 cards from your deck and play one","No Range"), null);
 	return leader;}
-
-
 
 }
