@@ -7,7 +7,7 @@ public class Charge extends Trait{
 private int charges;	
 	
 public Charge(String name, int charges) {
-	super(name, null, 0, charges, false, false);
+	super(name, null, 0, charges, false, false, "Charge");
 	this.setCharges(charges);}
 
 @Override

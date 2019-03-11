@@ -5,7 +5,7 @@ import cards.Card;
 public class NoTrait extends Trait{
 
 public NoTrait() {
-	super("", null, 0, 0, false, false);}
+	super("", null, 0, 0, false, false, "NoTrait");}
 
 @Override
 public void useAbility(Card card) {

@@ -5,7 +5,7 @@ import cards.Card;
 public class Deploy extends Trait{
 
 public Deploy(String name) {
-	super(name, null, 0, 0, true, false);}
+	super(name, null, 0, 0, true, false, "Deploy");}
 
 @Override
 public void useAbility(Card card) {

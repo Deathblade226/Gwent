@@ -83,11 +83,11 @@ public static Card units(Factions faction, int spot) {
 	case 9: holder = new Card("Artillery",faction,Type.ARTILLERY,5,5,new BoostAllUnits("Boost all units by 2.","Artillery: ", 2),null); break; //Boost all units	//No Trait
 	case 10: holder = new Card("Warrior",faction,Type.MELEE,6,6, new Summon("Summon 3 spiders (1 Power) to the melee row.","Melee: ", new Unit("Spider",Factions.UNKNOWN,Type.MELEE,1,1,null,null),3), new Deploy("Deploy: This card uses its ability on place.")); break;		//Summon			//Deploy
 	case 11: holder = new Card("Artillery",faction,Type.ARTILLERY,6,6,null,null); break;//No Ability 		//No Trait
-	case 12: holder = new Card("Ranger",faction,Type.RANGED,7,7, new DamageUnit("Damage an enemy unit for 2 damage.","Ranged: ",2), new DeathWish("Deathwish: This card uses its ability on death.")); break;		//Damage a unit		//Deathwish
+	case 12: holder = new Card("Ranger",faction,Type.RANGED,7,7, new DamageUnit("Damage an enemy unit for 2 damage.","Ranged: ",2), null); break;		//Damage a unit		//Deathwish
 	case 13: holder = new Card("Artillery",faction,Type.ARTILLERY,7,7,null,null); break;//No Ability 		//No Trait
 	case 14: holder = new Card("Warrior",faction,Type.MELEE,7,7,null,null); break;		//No Ability 		//No Trait
 	case 15: holder = new Card("Ranger",faction,Type.RANGED,8,8,null,null); break; 		//No Ability 		//No Trait
-	case 16: holder = new Card("Artillery",faction,Type.ARTILLERY,8,8, new Summon("Summon 2 Mortar Cannon (1 Power) to the artillery row.","Artillery: ", new Unit("Mortar Cannon",Factions.UNKNOWN,Type.ARTILLERY,1,1,null,null),2), new Deploy("Deploy: This card uses its ability on place.")); break;//Summon			//Deploy
+	case 16: holder = new Card("Artillery",faction,Type.ARTILLERY,8,8, new Summon("Summon 3 Mortar Cannon (1 Power) to the artillery row.","Artillery: ", new Unit("Mortar Cannon",Factions.UNKNOWN,Type.ARTILLERY,1,1,null,null),3), new Deploy("Deploy: This card uses its ability on place.")); break;//Summon			//Deploy
 	case 17: holder = new Card("Ranger",faction,Type.RANGED,9,9,null,null); break;  	//No Ability 		//No Trait
 	case 18: holder = new Card("Warrior",faction,Type.MELEE,9,9,null,null); break;		//No Ability 		//No Trait
 	case 19: holder = new Card("Warrior",faction,Type.MELEE,10,10,null,null); break;}  	//No Ability 		//No Trait
@@ -102,8 +102,8 @@ public static Card special(int spot, Factions faction) { //name, faction, type, 
 	switch(spot) {
 	case 0: holder = new Special("Holy Light",faction,Type.SPECIAL,0,0, new BoostAllUnits("Boost all units by 2.","Special Card: ", 2),null); break; 	//Boost all units
 	case 1: holder = new Special("Scorch",faction,Type.SPECIAL,0,0, new DestroyHighestUnit("Destroy the highest unit on the field.","Special Card: "),null); break;		//Destroy highest level
-	case 2: holder = new Special("Thunder",faction,Type.SPECIAL,0,0, new DamageUnit("Damage an enemy unit for 5 damage.","Special Card: ",2),null); break;		//Damage a card by X amount				//Charges: 3
-	case 3: holder = new Special("Thunder",faction,Type.SPECIAL,0,0, new DamageUnit("Damage an enemy unit for 5 damage.","Special Card: ",2),null); break;		//Damage a card by X amount				//Charges: 3			
+	case 2: holder = new Special("Thunder",faction,Type.SPECIAL,0,0, new DamageUnit("Damage an enemy unit for 5 damage.","Special Card: ",5),null); break;		//Damage a card by X amount				//Charges: 3
+	case 3: holder = new Special("Thunder",faction,Type.SPECIAL,0,0, new DamageUnit("Damage an enemy unit for 5 damage.","Special Card: ",5),null); break;		//Damage a card by X amount				//Charges: 3			
 	case 4: holder = new Special("Health Potion",faction,Type.SPECIAL,0,0, new HealCard("Heal a unit card for 5 points.","Special Card: ",5),null); break;		//Heal a card by X						
 	case 5: holder = new Special("Health Potion",faction,Type.SPECIAL,0,0, new HealCard("Heal a unit card for 5 points.","Special Card: ",5),null); break;		//Heal a card by X
 	case 6: holder = new Special("Spider Eggs",faction,Type.SPECIAL,0,0, new Summon("Summon 3 spiders (1 Power) to the melee row.","Melee: ", new Unit("Spider",Factions.UNKNOWN,Type.MELEE,1,1,null,null),3),null); break;		//Summon X SomeMonster (1 power) units

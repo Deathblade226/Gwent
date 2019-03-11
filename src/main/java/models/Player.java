@@ -78,6 +78,6 @@ public void setHolder(ArrayList<Card> holder) {
 @Override
 public String toString() {
 	StringBuilder builder = new StringBuilder();
-	builder.append(getName()).append(": Faction: [").append(getFaction()).append("]");
+	builder.append(getName()).append(": \tFaction: [").append(getFaction()).append("]");
 	return builder.toString();}
 }

@@ -10,15 +10,17 @@ protected int totalSummons;
 protected int charges;
 protected boolean useOnPlace;
 protected boolean useOnDeath;
+protected String type;
 
-public Trait(String name, Card summon, int totalSummons, int charges, boolean useOnPlace, boolean useOnDeath) {
+public Trait(String name, Card summon, int totalSummons, int charges, boolean useOnPlace, boolean useOnDeath, String type) {
 	super();
 	setName(name);
 	setSummon(summon);
 	setTotalSummons(totalSummons);
 	setCharges(charges);
 	setUseOnPlace(useOnPlace);
-	setUseOnDeath(useOnDeath);}
+	setUseOnDeath(useOnDeath);
+	setType(type);}
 
 public String getName() {
 return name;}
@@ -66,6 +68,12 @@ return useOnDeath;}
 
 public void setUseOnDeath(boolean useOnDeath) {
 	this.useOnDeath = useOnDeath;}
+
+public String getType() {
+return type;}
+
+public void setType(String type) {
+	this.type = type;}
 
 @Override
 public String toString() {
