@@ -1,9 +1,12 @@
 package app;
 
-import controllers.Body;
+import controller.GameMaster;
 
 public class Driver {
 
-public static void main(String[] args) {
-	Body.run();
-}}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+			GameMaster.run();
+	}
+
+}

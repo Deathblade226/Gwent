@@ -1,8 +1,10 @@
 package cards;
 
 import abilities.Abilities;
+import abilities.NoAbility;
 import enums.Factions;
 import enums.Type;
+import traits.NoTrait;
 import traits.Trait;
 
 public class Card {
@@ -14,6 +16,7 @@ protected int powerBase;
 protected int powerCurrent;
 protected Abilities ability;
 protected Trait trait;
+protected boolean alive = true;
 
 public Card(String name, Factions faction, Type type, int powerBase, int powerCurrent, Abilities ability, Trait trait) {
 	setName(name);
@@ -34,12 +37,14 @@ public Factions getFaction() {
 return faction;}
 
 public void setFaction(Factions faction) {
+	if (faction == null) {faction = Factions.UNKNOWN;}
 	this.faction = faction;}
 
 public Type getType() {
 return type;}
 
 public void setType(Type type) {
+	if (type == null) {type = Type.UNKNOWN;}
 	this.type = type;}
 
 public int getPowerBase() {
@@ -58,13 +63,33 @@ public Abilities getAbility() {
 return ability;}
 
 public void setAbility(Abilities ability) {
+	if (ability == null) {ability = new NoAbility();}
 	this.ability = ability;}
 
 public Trait getTrait() {
 return trait;}
 
 public void setTrait(Trait trait) {
+	if (trait == null) {trait = new NoTrait("Nothing");}
 	this.trait = trait;}
+
+public boolean isAlive() {
+return alive;}
+
+public void setAlive(boolean alive) {
+	this.alive = alive;}
+
+public void buff(int buff) {
+	if (buff < 0) {buff = 0;}
+	setPowerCurrent(getPowerCurrent() + buff);}
+
+public void damage(int damage) {
+	if (damage < 0) {damage = 0;}
+	setPowerCurrent(getPowerCurrent() - damage);}
+
+public void heal(int heal) {
+	if (getPowerCurrent() + heal > getPowerBase()) {setPowerCurrent(getPowerBase());}
+	setPowerCurrent(getPowerCurrent() + heal);}
 
 @Override
 public String toString() {
@@ -80,3 +105,4 @@ public String toString() {
 
 
 }
+

@@ -1,9 +1,10 @@
 package controller;
 
-public class Body {
+public class GameMaster {
 
 public static void run() {
 	
 }
 	
 }
+
