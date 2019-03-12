@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#202020" height="400.0" stroke="#ffcc20" strokeType="INSIDE" strokeWidth="3.0" width="600.0">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </Rectangle>
+      <Pane layoutX="13.0" layoutY="13.0" prefHeight="375.0" prefWidth="575.0">
+         <children>
+            <Group>
+               <children>
+                  <Button layoutX="100.0" layoutY="199.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="375.0" text="Multiplayer">
+                     <font>
+                        <Font name="Times New Roman Bold" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="100.0" layoutY="99.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="375.0" text="Singleplayer">
+                     <font>
+                        <Font name="Times New Roman Bold" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="338.0" layoutY="299.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Quit">
+                     <font>
+                        <Font name="Times New Roman Bold" size="20.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="138.0" layoutY="299.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="Help">
+                     <font>
+                        <Font name="Times New Roman Bold" size="20.0" />
+                     </font>
+                  </Button>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Group>
+            <Group>
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="51.0" layoutX="138.0" layoutY="24.0" mouseTransparent="true" stroke="#ffcc20" strokeType="INSIDE" strokeWidth="3.0" width="300.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="0.004761904761904773" startX="1.0" startY="1.0">
+                           <stops>
+                              <Stop color="#999999" />
+                              <Stop color="WHITE" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="51.0" layoutX="338.0" layoutY="299.0" mouseTransparent="true" stroke="#ffcc20" strokeType="INSIDE" strokeWidth="3.0" width="100.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="0.004761904761904762" startX="1.0" startY="1.0">
+                           <stops>
+                              <Stop color="#0000004d" />
+                              <Stop color="#ffffff00" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="76.0" layoutX="100.0" layoutY="99.0" mouseTransparent="true" stroke="#ffcc20" strokeType="INSIDE" strokeWidth="3.0" width="375.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="0.004761904761904762" startX="1.0" startY="1.0">
+                           <stops>
+                              <Stop color="#0000004d" />
+                              <Stop color="#ffffff00" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="76.0" layoutX="100.0" layoutY="199.0" mouseTransparent="true" stroke="#ffcc20" strokeType="INSIDE" strokeWidth="3.0" width="375.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="0.004761904761904762" startX="1.0" startY="1.0">
+                           <stops>
+                              <Stop color="#0000004d" />
+                              <Stop color="#ffffff00" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" height="51.0" layoutX="138.0" layoutY="299.0" mouseTransparent="true" stroke="#ffcc20" strokeType="INSIDE" strokeWidth="3.0" width="100.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="0.004761904761904762" startX="1.0" startY="1.0">
+                           <stops>
+                              <Stop color="#0000004d" />
+                              <Stop color="#ffffff00" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+               </children>
+            </Group>
+            <Text layoutX="261.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gwent">
+               <font>
+                  <Font name="Times New Roman Bold" size="25.0" />
+               </font>
+            </Text>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00000040" height="375.0" mouseTransparent="true" stroke="#ffcc20" strokeType="INSIDE" strokeWidth="3.0" width="575.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </Rectangle>
+         </children>
+      </Pane>
+      <Group>
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="25.0" layoutX="574.0" layoutY="374.0" stroke="#ffcc20" strokeType="INSIDE" strokeWidth="3.0" width="25.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="25.0" layoutX="574.0" layoutY="2.0" stroke="#ffcc20" strokeType="INSIDE" strokeWidth="3.0" width="25.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="25.0" layoutX="2.0" layoutY="374.0" stroke="#ffcc20" strokeType="INSIDE" strokeWidth="3.0" width="25.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="25.0" layoutX="2.0" layoutY="2.0" stroke="#ffcc20" strokeType="INSIDE" strokeWidth="3.0" width="25.0" />
+         </children>
+      </Group>
+   </children>
+</Pane>
