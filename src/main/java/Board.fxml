@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="918.0" prefWidth="1835.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller = "application.Board">
+   <children>
+      <ImageView fitHeight="836.0" fitWidth="1977.0" layoutX="3.0" layoutY="-14.0">
+         <image>
+            <Image url="@../../../../../../Desktop/Gwent%20elements/Drawing/Board.png" />
+         </image>
+      </ImageView>
+      <Button id="turnbutton" fx:id="pass" layoutX="1694.0" layoutY="389.0" mnemonicParsing="false" onAction="#passTurn" prefHeight="56.0" prefWidth="187.0" text="Pass" />
+      <Pane id="p2-king" fx:id="opposingLead" layoutX="135.0" layoutY="74.0" prefHeight="150.0" prefWidth="131.0" />
+      <Pane id="p1-king" fx:id="currentLead" layoutX="125.0" layoutY="583.0" prefHeight="150.0" prefWidth="131.0" />
+      <Pane id="p2-seigeHorn" layoutX="545.0" prefHeight="120.0" prefWidth="150.0" />
+      <Pane id="p2-rangedHorn" layoutX="545.0" layoutY="134.0" prefHeight="120.0" prefWidth="150.0" />
+      <Pane id="p2-meleeHorn" layoutX="545.0" layoutY="269.0" prefHeight="120.0" prefWidth="150.0" />
+      <Pane id="p1-meleeHorn" layoutX="545.0" layoutY="432.0" prefHeight="120.0" prefWidth="150.0" />
+      <Pane id="p1-rangedHorn" layoutX="545.0" layoutY="562.0" prefHeight="120.0" prefWidth="150.0" />
+      <Pane id="p1-seigeHorn" layoutX="545.0" layoutY="702.0" prefHeight="120.0" prefWidth="150.0" />
+      <HBox id="p2-seige" layoutX="708.0" layoutY="-10.0" prefHeight="120.0" prefWidth="953.0" />
+      <HBox id="p2-ranged" layoutX="708.0" layoutY="134.0" prefHeight="120.0" prefWidth="953.0" />
+      <HBox id="p2-melee" layoutX="708.0" layoutY="267.0" prefHeight="120.0" prefWidth="953.0" />
+      <HBox id="p1-melee" layoutX="708.0" layoutY="432.0" prefHeight="120.0" prefWidth="953.0" />
+      <HBox id="p1-range" layoutX="708.0" layoutY="562.0" prefHeight="120.0" prefWidth="953.0" />
+      <HBox id="p1-seige" layoutX="708.0" layoutY="702.0" prefHeight="120.0" prefWidth="953.0" />
+      <HBox prefHeight="100.0" prefWidth="200.0" />
+      <HBox id="currentHand" fx:id="currentHand" layoutX="662.0" layoutY="811.0" prefHeight="120.0" prefWidth="953.0" />
+      <HBox id="weather" layoutX="56.0" layoutY="339.0" prefHeight="127.0" prefWidth="293.0" />
+      <TextField id="p1 points" fx:id="currentPoints" alignment="CENTER" layoutX="432.0" layoutY="552.0" prefHeight="80.0" prefWidth="96.0" style="-fx-font-size: 50 px; -fx-text-fill: -fx-text-inner-color; -fx-text-inner-color: yellow; -fx-background-color: black;" text="0" />
+      <TextField id="p2 points" alignment="CENTER" layoutX="426.0" layoutY="149.0" prefHeight="80.0" prefWidth="96.0" style="-fx-font-size: 50 px; -fx-text-fill: -fx-text-inner-color; -fx-text-inner-color: yellow; -fx-background-color: black;" text="0" />
+   </children>
+</AnchorPane>
